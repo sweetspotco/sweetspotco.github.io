@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+   <title>Raise a cat</title>
+   <style>
+       body, html {
+           height: 100%;
+           margin: 0;
+           padding: 0;
+           overflow: hidden;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           background-color: #000;
+       }
+       #game-container {
+           width: 100%;
+           height: 100%;
+           max-width: 800px;
+           max-height: 600px;
+       }
+       iframe {
+           width: 100%;
+           height: 100%;
+           border: none;
+       }
+   </style>
+</head>
+<body>
+   <div id="game-container">
+       <iframe src="https://rosebud.ai/p/8e1e68a6-c77d-4492-8989-6c0e45131651"
+               frameborder="0"
+               allowfullscreen="true"
+               allow="autoplay; fullscreen *; geolocation; microphone; camera; midi; monetization; xr-spatial-tracking; gamepad; gyroscope; accelerometer; xr; cross-origin-isolated"
+               sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-pointer-lock allow-top-navigation">
+       </iframe>
+   </div>
+   <script>
+       function resizeGame() {
+           var container = document.getElementById('game-container');
+           var aspectRatio = 800 / 600;
+           var windowRatio = window.innerWidth / window.innerHeight;
+           var width, height;
+
+           if (windowRatio > aspectRatio) {
+               height = Math.min(window.innerHeight, 600);
+               width = height * aspectRatio;
+           } else {
+               width = Math.min(window.innerWidth, 800);
+               height = width / aspectRatio;
+           }
+
+           container.style.width = width + 'px';
+           container.style.height = height + 'px';
+       }
+
+       window.addEventListener('resize', resizeGame);
+       window.addEventListener('orientationchange', resizeGame);
+       document.addEventListener('DOMContentLoaded', resizeGame);
+   </script>
+</body>
+</html>
